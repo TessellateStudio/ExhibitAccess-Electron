@@ -1,4 +1,4 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 const { v3: { discovery, api } } = require('node-hue-api')
 
@@ -146,16 +146,28 @@ class Hue {
         this.withEachLight((light) => {
             const el = document.createElement('DIV')
             el.innerHTML = `<h3>ID: ${light.id}</h3><p>${light.name}</p>`
-            el.addEventListener('click', () => this.toggleLight(light))
+            el.addEventListener('click', () => this.toggleLightObject(light))
             el.className = light.state.on ? 'on' : 'off'
             newLp.appendChild(el)
         })
         lp.parentNode.replaceChild(newLp, lp)
     }
 
-    toggleLight(light) {
+    toggleLightObject(light) {
         console.log('toggle light', light.id, light.state)
         this.api.lights.setLightState(light.id, { on: !light.state.on }).then(() => {
+            this.buildLightPanel()
+        })
+    }
+
+    toggleLight(id) {
+        this.api.lights.getLight(id).then(light => {
+            this.toggleLight(light)
+        })
+    }
+
+    setBrightness(id, bri) {
+        this.api.lights.setLightState(id, { on: true, bri }).then(() => {
             this.buildLightPanel()
         })
     }
