@@ -1,0 +1,223 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size:12px;
+    margin:0;
+    padding:0;
+    width:100vw;
+    height: 100vh;
+    text-transform:uppercase;
+    background: white;
+    color: #f7f7f7;
+}
+
+
+/* Portrait layout (default) */
+.app {
+    background-color: #234770;
+    height: 100vh;
+}
+
+.app > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 1;
+}
+
+.app header {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    z-index: 9;
+    padding: 40px 60px 60px;
+}
+
+.app header img {
+    float: right;
+    width: 360px;
+    padding-top: 40px;
+}
+
+.app header h1 {
+    float: left;
+    font-size: 42px;
+}
+
+form {
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    top: 50%;
+    width: 1000px;
+    margin-left: -500px;
+    height: 500px;
+    margin-top: -250px;
+    text-transform: none;
+    text-align: left;
+}
+
+form h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+form p {
+    margin: 0 auto 40px;
+}
+
+button[type=submit] {
+    color: #234770;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    border: 2px inset #f7f7f7;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 80px;
+    letter-spacing: 0.68px;
+    text-align: center;
+    width: 400px;
+    box-sizing: border-box;
+    display: block;
+    margin-left: 190px;
+}
+
+label {
+    line-height: 60px;
+    font-size: 24px;
+    width: 170px;
+    margin-right: 20px;
+
+    text-align: right;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+input, select {
+    font-size: 24px;
+    padding: 16px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+input + label {
+    position: static;
+    margin-left: 20px;
+    text-align: left;
+    width: auto;
+}
+
+#light-panel {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    bottom: 100px;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+}
+
+#light-panel div {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+div.on {
+    background-color:#75c16e;
+}
+div.off {
+    background-color: #f2a900;
+}
+
+#toggle-hue-bridge {
+    position: fixed;
+    top: 10px;
+    right: 50px;
+    z-index: 9;
+}
+
+#quit-button {
+    position: fixed;
+    z-index: 9;
+    bottom: 100px;
+    right: 100px;
+    font-size: 60px;
+}
+
+.event {
+    margin: 0;
+    color:#FFFFFF;
+    font-size:15px;
+    font-weight: bold;
+    padding:12px 0;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+#hue-status-bar .event {
+    top: 0;
+    bottom: auto;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+#hue-status-bar .event.listening {
+    display: none;
+}
+
+.event.deviceready, .event.loading {
+    background-color:#75c16e;
+    display:none;
+}
+
+.event.invalid, .event.pressme {
+    background-color: #f2a900;
+    display: none;
+}
+
+.event.unavailable {
+    background-color: #f2a900;
+    display: none;
+}
+
+#form {
+    display: none;
+}
+
+#iframe {
+    display: none;
+}
+
+#iframe.visible {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    z-index: 10;
+}
+#iframe iframe {
+    border: none;
+    width: 100vw;
+    height: 100vh;
+}

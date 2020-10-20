@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline'; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, viewport-fit=cover, shrink-to-fit=yes">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Exhibit Access</title>
+</head>
+<body>
+<div id="iframe"></div>
+<div id="exhibit-access" class="app">
+    <img src="img/overview_blur.jpg" />
+    <header>
+        <img src="img/logo.png" />
+        <h1>Exhibit Access</h1>
+    </header>
+    <form id="form" novalidate>
+        <p>
+            <label for="subdomain">https://</label>
+            <input type="url" name="subdomain" id="subdomain" formnovalidate />
+            <label for="subdomain">.exhibitaccess.com</label>
+        </p>
+        <p>
+            <label for="display">Display #</label>
+            <input type="number" name="display" id="display" />
+        </p>
+        <p>
+            <button type="submit">GO</button>
+        </p>
+    </form>
+    <div id="quit-button">&times;</div>
+    <div id="light-panel"></div>
+    <button type="button" id="toggle-hue-bridge"></button>
+    <div id="hue-status-bar" class="blink">
+        <p class="event listening">No Hue Bridge Found</p>
+        <p class="event loading">Connecting to Hue Bridge</p>
+        <p class="event pressme">Press the Blue Button on the Hue Bridge</p>
+        <p class="event unavailable">No Hue Bridge Found</p>
+        <p class="event deviceready">Hue Bridge Connected</p>
+    </div>
+    <div id="status-bar" class="blink">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event deviceready">Device is Ready</p>
+        <p class="event invalid">
+            Invalid Exhibit Access Server
+        </p>
+        <p class="event unavailable">
+            Server down or unavailable
+        </p>
+        <p class="event loading">
+            Display Connected
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
