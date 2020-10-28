@@ -81,24 +81,33 @@ class App {
         // url = `http://192.168.1.165:3001/displays/${app.getDisplay()}`
         const {x, y, scale} = transform
         const iframe = document.createElement('IFRAME')
+        let timeout
+        let counting = false
+        let clicks = 0
 
-        var clicks = 0, timeout = null
+        const increment = function() {
+          counting = false
+          clicks = 0
+        }
 
         iframe.addEventListener('load', () => {
             iframe.contentWindow.addEventListener('click', () => {
-                if (clicks === 0) {
-                    clicks = 1
-                } else if (timeout) {
-                    clicks += 1
-                } else {
-                    timeout = window.setTimeout(() => {}, 1000)
-                }
-                if (clicks === 5) {
+              if (counting) {
+                clicks += 1
+                window.clearTimeout(timeout)
+                timeout = window.setTimeout(increment, 500)
+              } else {
+                counting = true
+                clicks = 1
+                timeout = window.setTimeout(increment, 500)
+              }
+                if (clicks === 10) {
                     const el = document.getElementById('iframe')
                     el.classList.remove('visible')
                     el.removeChild(el.firstChild)
                     document.getElementById('exhibit-access').style.display = "block"
                     clicks = 0
+                    counting = false
                     this.hue.turnAllOff()
                 }
             })

@@ -1,6 +1,6 @@
 {
   "name": "exhibitaccess",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Exhibit Access for digital displays",
   "main": "main.js",
   "author": "David Furber",
@@ -12,13 +12,18 @@
     "appId": "com.exhibitaccess.app",
     "win": {
       "target": "nsis",
-      "icon": "icons/win/icon.ico"
+      "icon": "icons/win/icon.ico",
+      "publish": {
+        "provider": "github",
+        "private": true
+      }
     }
   },
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "publish": "electron-builder --publish always"
   },
   "devDependencies": {
     "electron": "^10.1.4",
